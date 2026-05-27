@@ -11,7 +11,8 @@ def send_email(subject: str, body: str) -> None:
     user = os.environ["NEWS_DAILY_SMTP_USER"]
     password = os.environ["NEWS_DAILY_SMTP_PASS"]
     to = os.environ["NEWS_DAILY_EMAIL_TO"]
-    from_addr = os.environ.get("NEWS_DAILY_EMAIL_FROM", user)
+    # GitHub Actions secrets may expand to an empty string if unset. Treat empty as missing.
+    from_addr = os.environ.get("NEWS_DAILY_EMAIL_FROM") or user
 
     msg = EmailMessage()
     msg["Subject"] = subject
@@ -28,4 +29,3 @@ def send_email(subject: str, body: str) -> None:
             s.starttls()
             s.login(user, password)
             s.send_message(msg)
-
