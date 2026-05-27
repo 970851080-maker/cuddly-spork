@@ -58,6 +58,9 @@ python -m news_daily send --date 2026-05-26
 - `NEWS_DAILY_SMTP_USER` / `NEWS_DAILY_SMTP_PASS`
 - `NEWS_DAILY_EMAIL_TO`：逗号分隔收件人
 - `NEWS_DAILY_EMAIL_FROM`：可选，默认同 `SMTP_USER`
+#### 可选：英文内容翻译为中文（OpenAI）
+- `OPENAI_API_KEY`：用于把英文来源摘要翻译为中文（不设置则保留英文）
+- `OPENAI_MODEL`：可选，默认 `gpt-4.1-mini`
 
 如果没有配置 SMTP 或 webhook，`send` 命令会失败提示，避免自动任务看似成功但实际未发送。
 
