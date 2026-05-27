@@ -28,8 +28,6 @@ jobs:
           NEWS_DAILY_EMAIL_TO: yl970851080@gmail.com,970851080@qq.com
           NEWS_DAILY_EMAIL_FROM: ${{ secrets.NEWS_DAILY_EMAIL_FROM }}
           NEWS_DAILY_USER_PROFILE_JSON: ${{ secrets.NEWS_DAILY_USER_PROFILE_JSON }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
           NEWS_DAILY_FEISHU_WEBHOOK: ${{ secrets.NEWS_DAILY_FEISHU_WEBHOOK }}
           NEWS_DAILY_WECOM_WEBHOOK: ${{ secrets.NEWS_DAILY_WECOM_WEBHOOK }}
         run: |

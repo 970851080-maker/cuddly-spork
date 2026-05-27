@@ -21,9 +21,6 @@ jobs:
       - name: Install
         run: pip install -r requirements.txt
       - name: Generate
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
         run: python -m news_daily generate --sources sources.yaml
       - name: Commit report
         run: |
