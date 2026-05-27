@@ -9,6 +9,7 @@ on:
 jobs:
   send:
     runs-on: ubuntu-latest
+    environment: LIN
     permissions:
       contents: write
     steps:
