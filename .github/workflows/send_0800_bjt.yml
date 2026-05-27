@@ -1,0 +1,43 @@
+name: Send news (08:00 BJT)
+
+on:
+  schedule:
+    # Beijing 08:00 = UTC 00:00
+    - cron: "0 0 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Generate and send (today BJT)
+        env:
+          NEWS_DAILY_SMTP_HOST: ${{ secrets.NEWS_DAILY_SMTP_HOST }}
+          NEWS_DAILY_SMTP_PORT: ${{ secrets.NEWS_DAILY_SMTP_PORT }}
+          NEWS_DAILY_SMTP_USER: ${{ secrets.NEWS_DAILY_SMTP_USER }}
+          NEWS_DAILY_SMTP_PASS: ${{ secrets.NEWS_DAILY_SMTP_PASS }}
+          NEWS_DAILY_EMAIL_TO: yl970851080@gmail.com,970851080@qq.com
+          NEWS_DAILY_EMAIL_FROM: ${{ secrets.NEWS_DAILY_EMAIL_FROM }}
+          NEWS_DAILY_USER_PROFILE_JSON: ${{ secrets.NEWS_DAILY_USER_PROFILE_JSON }}
+          NEWS_DAILY_FEISHU_WEBHOOK: ${{ secrets.NEWS_DAILY_FEISHU_WEBHOOK }}
+          NEWS_DAILY_WECOM_WEBHOOK: ${{ secrets.NEWS_DAILY_WECOM_WEBHOOK }}
+        run: |
+          python -c "from news_daily.timeutil import today_bjt_ymd; print(today_bjt_ymd())" > /tmp/d.txt
+          DATE=$(cat /tmp/d.txt)
+          python -m news_daily generate --sources sources.yaml --date "$DATE"
+          python -m news_daily send --date "$DATE"
+      - name: Commit generated report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/daily output/news_daily.sqlite3 || true
+          git commit -m "news: daily report" || exit 0
+          git push

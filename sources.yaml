@@ -1,0 +1,546 @@
+# 新闻源配置（12个领域版）
+# 优先 RSS / 官方网页；credibility: 1(低) - 5(高)
+# max_items 控制每个源最多取几条，避免单一网站刷屏。
+sources:
+  # 国内新闻联播与综合权威源
+  - id: cctv_xwlb
+    name: 央视网-新闻联播
+    type: html
+    url: https://tv.cctv.com/lm/xwlb/
+    categories: [政治治理, 社会文化]
+    region: china
+    credibility: 5
+    max_items: 14
+    enabled: true
+
+  - id: xinhuanet_politics
+    name: 新华网-时政
+    type: html
+    url: https://www.news.cn/politics/
+    categories: [政治治理, 社会文化]
+    region: china
+    credibility: 5
+    max_items: 10
+    enabled: true
+
+  # 1. 自然科学
+  - id: nature_rss
+    name: Nature
+    type: rss
+    url: https://www.nature.com/nature.rss
+    categories: [自然科学]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: science_news_rss
+    name: Science News
+    type: rss
+    url: https://www.science.org/rss/news_current.xml
+    categories: [自然科学]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: harvard_science
+    name: Harvard Gazette-Science
+    type: rss
+    url: https://news.harvard.edu/gazette/section/science-technology/feed/
+    categories: [自然科学, 工程技术]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: cas_news
+    name: 中国科学院-要闻
+    type: html
+    url: https://www.cas.cn/yw/
+    categories: [自然科学]
+    region: china
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: ustc_news
+    name: 中国科大-新闻
+    type: html
+    url: https://news.ustc.edu.cn/
+    categories: [自然科学, 教育认知]
+    region: china
+    credibility: 5
+    max_items: 6
+    enabled: true
+
+  # 2. 工程技术
+  - id: mit_engineering
+    name: MIT News-Engineering
+    type: rss
+    url: https://news.mit.edu/rss/topic/engineering
+    categories: [工程技术]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: nvidia_blog
+    name: NVIDIA Blog
+    type: rss
+    url: https://blogs.nvidia.com/feed/
+    categories: [工程技术, 自然科学]
+    region: world
+    credibility: 4
+    max_items: 8
+    enabled: true
+
+  - id: siemens_press
+    name: Siemens Press
+    type: rss
+    url: https://press.siemens.com/global/en/rss.xml
+    categories: [工程技术]
+    region: world
+    credibility: 4
+    max_items: 6
+    enabled: true
+
+  - id: spacex_updates
+    name: SpaceX Updates
+    type: html
+    url: https://www.spacex.com/updates/
+    categories: [工程技术, 自然科学]
+    region: world
+    credibility: 4
+    max_items: 6
+    enabled: true
+
+  - id: huawei_news
+    name: 华为-新闻
+    type: html
+    url: https://www.huawei.com/cn/news
+    categories: [工程技术]
+    region: china
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: cscec_news
+    name: 中国建筑-公司要闻
+    type: html
+    url: https://www.cscec.com/xwzx_new/gsyw_new/
+    categories: [工程技术, 政治治理]
+    region: china
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: cscec3b3_news
+    name: 中建三局三公司-公司新闻
+    type: html
+    url: https://3b3.cscec.com/xwzx/gsxw/
+    categories: [工程技术]
+    region: china
+    credibility: 5
+    max_items: 12
+    enabled: true
+
+  - id: mohurd_news
+    name: 住建部-建设要闻
+    type: html
+    url: https://www.mohurd.gov.cn/xinwen/jsyw/
+    categories: [工程技术, 政治治理]
+    region: china
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: mot_news
+    name: 交通运输部-交通要闻
+    type: html
+    url: https://www.mot.gov.cn/xinwen/jiaotongyaowen/
+    categories: [工程技术, 政治治理]
+    region: china
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  # 3. 医学健康
+  - id: nejm_current
+    name: New England Journal of Medicine
+    type: rss
+    url: https://www.nejm.org/action/showFeed?jc=nejm&type=etoc&feed=rss
+    categories: [医学健康]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: lancet_current
+    name: The Lancet
+    type: rss
+    url: https://www.thelancet.com/rssfeed/lancet_current.xml
+    categories: [医学健康]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: cdc_news
+    name: CDC Newsroom
+    type: rss
+    url: https://tools.cdc.gov/api/v2/resources/media/132608.rss
+    categories: [医学健康]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: who_news
+    name: WHO News
+    type: html
+    url: https://www.who.int/news
+    categories: [医学健康]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  # 4. 农业食品
+  - id: fao_news
+    name: FAO Newsroom
+    type: html
+    url: https://www.fao.org/newsroom/en
+    categories: [农业食品]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: john_deere_news
+    name: John Deere News
+    type: html
+    url: https://www.deere.com/en/news/
+    categories: [农业食品, 工程技术]
+    region: world
+    credibility: 4
+    max_items: 6
+    enabled: true
+
+  - id: cargill_news
+    name: Cargill News
+    type: html
+    url: https://www.cargill.com/news
+    categories: [农业食品]
+    region: world
+    credibility: 4
+    max_items: 6
+    enabled: true
+
+  - id: cau_news
+    name: 中国农业大学-新闻
+    type: html
+    url: https://news.cau.edu.cn/zhxwnew/index.htm
+    categories: [农业食品, 教育认知]
+    region: china
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: cofco_news
+    name: 中粮集团-新闻
+    type: html
+    url: https://www.cofco.com/cn/News/Allnews/
+    categories: [农业食品, 经济金融]
+    region: china
+    credibility: 5
+    max_items: 6
+    enabled: true
+
+  # 5. 经济金融
+  - id: federal_reserve
+    name: Federal Reserve Press
+    type: rss
+    url: https://www.federalreserve.gov/feeds/press_all.xml
+    categories: [经济金融]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: ecb_press
+    name: European Central Bank
+    type: rss
+    url: https://www.ecb.europa.eu/rss/press.html
+    categories: [经济金融]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: worldbank_news
+    name: World Bank News
+    type: html
+    url: https://www.worldbank.org/en/news/all
+    categories: [经济金融, 政治治理]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: pbc_news
+    name: 中国人民银行-沟通交流
+    type: html
+    url: http://www.pbc.gov.cn/goutongjiaoliu/113456/113469/index.html
+    categories: [经济金融, 政治治理]
+    region: china
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: mof_news
+    name: 财政部-财政新闻
+    type: html
+    url: https://www.mof.gov.cn/zhengwuxinxi/caizhengxinwen/
+    categories: [经济金融, 政治治理]
+    region: china
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  # 6. 政治治理
+  - id: un_news
+    name: United Nations News
+    type: rss
+    url: https://news.un.org/feed/subscribe/en/news/all/rss.xml
+    categories: [政治治理, 社会文化]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: ndrc_news
+    name: 发改委-新闻发布
+    type: html
+    url: https://www.ndrc.gov.cn/xwdt/xwfb/
+    categories: [政治治理, 经济金融]
+    region: china
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  # 7. 法律规则
+  - id: sec_press
+    name: U.S. SEC Press Releases
+    type: rss
+    url: https://www.sec.gov/news/pressreleases.rss
+    categories: [法律规则, 经济金融]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: us_supreme_court
+    name: U.S. Supreme Court
+    type: html
+    url: https://www.supremecourt.gov/publicinfo/press/pressreleases.aspx
+    categories: [法律规则]
+    region: world
+    credibility: 5
+    max_items: 6
+    enabled: true
+
+  - id: supreme_people_court
+    name: 最高人民法院-新闻
+    type: html
+    url: https://www.court.gov.cn/zixun-gengduo-15.html
+    categories: [法律规则, 政治治理]
+    region: china
+    credibility: 5
+    max_items: 6
+    enabled: true
+
+  - id: moj_news
+    name: 司法部-头条新闻
+    type: html
+    url: https://www.moj.gov.cn/pub/sfbgw/gwxw/ttxw/
+    categories: [法律规则, 政治治理]
+    region: china
+    credibility: 5
+    max_items: 6
+    enabled: true
+
+  # 8. 社会文化
+  - id: bbc_world
+    name: BBC World
+    type: rss
+    url: https://feeds.bbci.co.uk/news/world/rss.xml
+    categories: [社会文化, 政治治理]
+    region: world
+    credibility: 4
+    max_items: 8
+    enabled: true
+
+  - id: nytimes_world
+    name: New York Times World
+    type: rss
+    url: https://rss.nytimes.com/services/xml/rss/nyt/World.xml
+    categories: [社会文化, 政治治理]
+    region: world
+    credibility: 4
+    max_items: 8
+    enabled: true
+
+  - id: mct_news
+    name: 文旅部-文化要闻
+    type: html
+    url: https://www.mct.gov.cn/whzx/whyw/
+    categories: [社会文化, 艺术审美]
+    region: china
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  # 9. 历史地理
+  - id: smithsonian_history
+    name: Smithsonian History
+    type: rss
+    url: https://www.smithsonianmag.com/rss/history/
+    categories: [历史地理]
+    region: world
+    credibility: 4
+    max_items: 8
+    enabled: true
+
+  - id: nasa_breaking
+    name: NASA Breaking News
+    type: rss
+    url: https://www.nasa.gov/rss/dyn/breaking_news.rss
+    categories: [历史地理, 自然科学, 工程技术]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  # 10. 教育认知
+  - id: khan_academy_blog
+    name: Khan Academy Blog
+    type: rss
+    url: https://blog.khanacademy.org/feed/
+    categories: [教育认知]
+    region: world
+    credibility: 4
+    max_items: 8
+    enabled: true
+
+  - id: cambridge_news
+    name: University of Cambridge News
+    type: rss
+    url: https://www.cam.ac.uk/news/feed
+    categories: [教育认知, 自然科学]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: moe_news
+    name: 教育部-新闻
+    type: html
+    url: http://www.moe.gov.cn/jyb_xwfb/s5147/
+    categories: [教育认知, 政治治理]
+    region: china
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: pku_news
+    name: 北京大学-新闻
+    type: html
+    url: https://news.pku.edu.cn/xwzh/index.htm
+    categories: [教育认知, 自然科学]
+    region: china
+    credibility: 5
+    max_items: 6
+    enabled: true
+
+  - id: zju_news
+    name: 浙江大学-新闻
+    type: html
+    url: https://www.zju.edu.cn/xw/list.htm
+    categories: [教育认知, 自然科学]
+    region: china
+    credibility: 5
+    max_items: 6
+    enabled: true
+
+  # 11. 艺术审美
+  - id: artnews_rss
+    name: ARTnews
+    type: rss
+    url: https://www.artnews.com/feed/
+    categories: [艺术审美]
+    region: world
+    credibility: 4
+    max_items: 8
+    enabled: true
+
+  - id: artforum_rss
+    name: Artforum
+    type: rss
+    url: https://www.artforum.com/feed/
+    categories: [艺术审美]
+    region: world
+    credibility: 4
+    max_items: 8
+    enabled: true
+
+  - id: aesthetica_rss
+    name: Aesthetica Magazine
+    type: rss
+    url: https://aestheticamagazine.com/feed/
+    categories: [艺术审美]
+    region: world
+    credibility: 4
+    max_items: 8
+    enabled: true
+
+  - id: moma_magazine
+    name: MoMA Magazine
+    type: html
+    url: https://www.moma.org/magazine/
+    categories: [艺术审美]
+    region: world
+    credibility: 5
+    max_items: 6
+    enabled: true
+
+  # 12. 哲学宗教命理
+  - id: stanford_philosophy
+    name: Stanford Encyclopedia of Philosophy
+    type: rss
+    url: https://plato.stanford.edu/rss/sep.xml
+    categories: [哲学宗教命理, 教育认知]
+    region: world
+    credibility: 5
+    max_items: 8
+    enabled: true
+
+  - id: aeon_ideas
+    name: Aeon Essays
+    type: rss
+    url: https://aeon.co/feed.rss
+    categories: [哲学宗教命理, 社会文化]
+    region: world
+    credibility: 4
+    max_items: 8
+    enabled: true
+
+  - id: vatican_news
+    name: Vatican News
+    type: rss
+    url: https://www.vaticannews.va/en.rss.xml
+    categories: [哲学宗教命理, 社会文化]
+    region: world
+    credibility: 4
+    max_items: 8
+    enabled: true

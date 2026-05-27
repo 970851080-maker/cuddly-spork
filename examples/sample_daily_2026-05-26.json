@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "date_bjt": "2026-05-26",
+    "generated_at_utc": "2026-05-25T23:30:00Z",
+    "sources_count": 5,
+    "new_items": 3,
+    "note": "示例数据，仅用于展示结构"
+  },
+  "items": [
+    {
+      "title": "（示例）住建部发布城市更新相关通知",
+      "url": "https://www.mohurd.gov.cn/（示例）",
+      "source_id": "moe_housing_policy",
+      "source_name": "住建部-政策文件(网页)",
+      "credibility": 5,
+      "categories": ["政策", "城市更新", "工程建筑"],
+      "region": "china",
+      "published_at": "2026-05-26T00:10:00",
+      "content": null,
+      "summary_zh": "（示例）强调城市更新工作推进机制与工程建设管理要点。"
+    },
+    {
+      "title": "（示例）稳投资相关信息更新",
+      "url": "https://www.ndrc.gov.cn/（示例）",
+      "source_id": "ndrc",
+      "source_name": "发改委-要闻(网页)",
+      "credibility": 5,
+      "categories": ["政策", "经济", "基建"],
+      "region": "china",
+      "published_at": "2026-05-26T01:20:00",
+      "content": null,
+      "summary_zh": "（示例）披露稳投资与重点项目推进安排，关注资金与项目清单。"
+    },
+    {
+      "title": "（示例）国际市场波动影响大宗与融资环境",
+      "url": "https://www.reuters.com/（示例）",
+      "source_id": "reuters_top",
+      "source_name": "Reuters Top News (RSS)",
+      "credibility": 4,
+      "categories": ["国际", "金融", "经济"],
+      "region": "world",
+      "published_at": "2026-05-26T02:30:00",
+      "content": null,
+      "summary_zh": "（示例）关注利率、汇率与大宗价格变化对工程成本与融资的传导。"
+    }
+  ]
+}
+
