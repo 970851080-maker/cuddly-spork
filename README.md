@@ -61,7 +61,6 @@ python -m news_daily send --date 2026-05-26
 #### 可选：英文内容翻译为中文（OpenAI）
 - `OPENAI_API_KEY`：用于把英文来源摘要翻译为中文（不设置则保留英文）
 - `OPENAI_MODEL`：可选，默认 `gpt-4.1-mini`
-- `OPENAI_TRANSLATE_MAX_CALLS`：可选，默认 40；超出后不再调用翻译以避免 429 限流
 
 如果没有配置 SMTP 或 webhook，`send` 命令会失败提示，避免自动任务看似成功但实际未发送。
 
