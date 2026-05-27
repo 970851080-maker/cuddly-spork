@@ -9,6 +9,8 @@ import requests
 
 
 _CJK_RE = re.compile(r"[\u4e00-\u9fff]")
+_CACHE: dict[str, str] = {}
+_CALLS = 0
 
 
 def looks_chinese(text: str, min_cjk: int = 3) -> bool:
@@ -45,9 +47,17 @@ def translate_to_zh(text: str) -> str:
         return ""
     if looks_chinese(text):
         return text
+    cached = _CACHE.get(text)
+    if cached is not None:
+        return cached
 
     cfg = load_openai_config()
     if cfg is None:
+        return text
+    global _CALLS
+    max_calls = int(os.getenv("OPENAI_TRANSLATE_MAX_CALLS") or "40")
+    if _CALLS >= max_calls:
+        _CACHE[text] = text
         return text
 
     url = f"{cfg.base_url}/v1/responses"
@@ -67,18 +77,28 @@ def translate_to_zh(text: str) -> str:
             {"role": "user", "content": text},
         ],
     }
-    resp = requests.post(url, headers=headers, data=json.dumps(payload), timeout=cfg.timeout_s)
-    resp.raise_for_status()
-    data = resp.json()
+    try:
+        _CALLS += 1
+        resp = requests.post(url, headers=headers, data=json.dumps(payload), timeout=cfg.timeout_s)
+        resp.raise_for_status()
+        data = resp.json()
+    except requests.HTTPError as e:
+        # Never fail the whole daily run due to translation throttling.
+        if getattr(e.response, "status_code", None) in (429, 500, 502, 503, 504):
+            _CACHE[text] = text
+            return text
+        raise
 
     # responses API: prefer output_text when present, else walk output array.
     out = (data.get("output_text") or "").strip()
     if out:
+        _CACHE[text] = out
         return out
     chunks: list[str] = []
     for item in data.get("output") or []:
         for c in item.get("content") or []:
             if c.get("type") == "output_text" and c.get("text"):
                 chunks.append(c["text"])
-    return ("".join(chunks)).strip() or text
-
+    out2 = ("".join(chunks)).strip() or text
+    _CACHE[text] = out2
+    return out2
