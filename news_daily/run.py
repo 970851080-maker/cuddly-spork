@@ -138,6 +138,10 @@ def send_daily(date_str: str) -> None:
     cfg = load_config()
     md_path = cfg.output_dir / f"{date_str}.md"
     json_path = cfg.output_dir / f"{date_str}.json"
+    sent_marker_path = cfg.output_dir / f"{date_str}.sent"
+    skip_if_sent = os.getenv("NEWS_DAILY_SKIP_IF_SENT", "1") != "0"
+    if skip_if_sent and sent_marker_path.exists():
+        return
     if not md_path.exists():
         raise FileNotFoundError(f"report not found: {md_path}")
     if json_path.exists():
@@ -168,3 +172,4 @@ def send_daily(date_str: str) -> None:
     post_wecom(body)
     if not sent_or_configured:
         raise RuntimeError("No notification channel configured. Set SMTP secrets or webhook environment variables.")
+    sent_marker_path.write_text(_now_iso(), encoding="utf-8")

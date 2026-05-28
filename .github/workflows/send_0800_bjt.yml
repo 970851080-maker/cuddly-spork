@@ -4,6 +4,8 @@ on:
   schedule:
     # Beijing 08:00 = UTC 00:00
     - cron: "0 0 * * *"
+    # Backup trigger in case GitHub drops/delays the top-of-hour run.
+    - cron: "12 0 * * *"
   workflow_dispatch: {}
 
 jobs:
@@ -28,6 +30,7 @@ jobs:
           NEWS_DAILY_EMAIL_TO: yl970851080@gmail.com,970851080@qq.com
           NEWS_DAILY_EMAIL_FROM: ${{ secrets.NEWS_DAILY_EMAIL_FROM }}
           NEWS_DAILY_USER_PROFILE_JSON: ${{ secrets.NEWS_DAILY_USER_PROFILE_JSON }}
+          NEWS_DAILY_SKIP_IF_SENT: "1"
           NEWS_DAILY_FEISHU_WEBHOOK: ${{ secrets.NEWS_DAILY_FEISHU_WEBHOOK }}
           NEWS_DAILY_WECOM_WEBHOOK: ${{ secrets.NEWS_DAILY_WECOM_WEBHOOK }}
         run: |
